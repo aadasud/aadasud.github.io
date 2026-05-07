@@ -9,28 +9,28 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Your Name / Site Title"
+title                    : "Aadarsh Sudanagunta"
 title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "Your Name's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
-url                      : https://academicpages.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
+name                     : &name "Aadarsh Sudanagunta"
+description              : &description "Aerospace Engineering Gradaute Student | GNC | Optimal Control | Celestial Mechanics | State Estimation"   # Update this with a general description of your site, this is the default if not overridden by a page
+url                      : https://aadasud.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+repository               : "aadasud/aadasud.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  avatar           : "images/profile.png"
+  name             : "Aadarsh Sudanagunta"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Graduate student in Aerospace Engineering, focusing on GNC, optimal control, celestial mechanics, and state estimation"
   location         : "Earth"
-  employer         : "Red Brick University"
+  employer         : #"Texas A&M University"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "aadasud@gmail.com" 
 
   # Academic websites
   academia         : # URL
@@ -51,7 +51,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "aadasud"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
