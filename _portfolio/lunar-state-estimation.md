@@ -152,7 +152,7 @@ post-processing applications where compute time is not a constraint.
 - **Dynamics Integration:** ODE113 with adaptive step size 
   (RelTol = 1e-10, AbsTol = 1e-12)
 - **Key Methods:** Gauss-Newton iteration, Cholesky decomposition, 
-  unscented transform, Armijo-style line search, state transition 
+  unscented transform, state transition 
   matrix propagation
 
 ---
