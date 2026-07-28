@@ -29,9 +29,9 @@ centrifugal forces balance in the rotating frame. Linearizing the CR3BP
 equations of motion about L1 produces a \\(6\times6\\) system matrix whose 
 eigenvalues reveal the local stability structure:
 
-$$\delta\dot{\mathbf{x}} = A\,\delta\mathbf{x}, \qquad A = \begin{bmatrix} 0_{3\times3} & I_{3\times3} \\ U_{\text{pos}} & 2\Omega \end{bmatrix}$$
+$$\delta\dot{\mathbf{x}} = A\,\delta\mathbf{x}, \qquad A = \begin{bmatrix} 0\_{3\times3} & I\_{3\times3} \\ U\_{\text{pos}} & 2\Omega \end{bmatrix}$$
 
-where \\(U_{\text{pos}}\\) is the Hessian of the effective potential and 
+where \\(U\_{\text{pos}}\\) is the Hessian of the effective potential and 
 \\(2\Omega\\) is the Coriolis coupling matrix. At L1, this yields:
 
 $$\lambda \in \{\pm 2.932,\ \pm 2.334i,\ \pm 2.269i\}$$
@@ -45,10 +45,10 @@ time.
 
 ### Control Design
 
-With full 3-axis thrust authority (\\(B = [0_{3\times3};\ I_{3\times3}]^T\\)), 
+With full 3-axis thrust authority (\\(B = [0\_{3\times3};\ I\_{3\times3}]^T\\)), 
 the linearized pair \\((A,B)\\) was confirmed fully controllable (rank 6), and 
 an LQR gain was computed by solving the algebraic Riccati equation for a 
-range of control-penalty weightings \\(R\\), holding \\(Q = I_6\\) fixed. The 
+range of control-penalty weightings \\(R\\), holding \\(Q = I\_6\\) fixed. The 
 resulting control law \\(\mathbf{u} = -K\,\delta\mathbf{x}\\) was applied to 
 the **full nonlinear** CR3BP dynamics (not just the linear model used for 
 design) — a standard and important validation step, since a controller 

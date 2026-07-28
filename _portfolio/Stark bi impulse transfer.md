@@ -23,14 +23,14 @@ both parking orbits.
 ### The Boundary Value Problem
 
 A two-impulse orbital transfer is a boundary value problem: given a 
-departure position \\(\mathbf{r}_1\\) and arrival position \\(\mathbf{r}_2\\), 
+departure position \\(\mathbf{r}\_1\\) and arrival position \\(\mathbf{r}\_2\\), 
 find the transfer orbit connecting them, along with the departure and 
-arrival velocities \\(\mathbf{v}_1^+\\) and \\(\mathbf{v}_2^-\\) that minimize 
+arrival velocities \\(\mathbf{v}\_1^+\\) and \\(\mathbf{v}\_2^-\\) that minimize 
 the total impulse cost
 
-$$\Delta V = \|\mathbf{v}_1^+ - \mathbf{v}_1^-\| + \|\mathbf{v}_2^+ - \mathbf{v}_2^-\|$$
+$$\Delta V = \|\mathbf{v}\_1^+ - \mathbf{v}\_1^-\| + \|\mathbf{v}\_2^+ - \mathbf{v}\_2^-\|$$
 
-where \\(\mathbf{v}_1^-\\) and \\(\mathbf{v}_2^+\\) are the spacecraft's 
+where \\(\mathbf{v}\_1^-\\) and \\(\mathbf{v}\_2^+\\) are the spacecraft's 
 velocities on its original and final orbits, respectively.
 
 ### The Stark Structure Formulation
@@ -39,23 +39,23 @@ Rather than the standard universal-variables approach, this solver uses
 the **Stark structure** method, which transforms the boundary value 
 problem into a polynomial root-finding problem in the transfer orbit's 
 angular momentum. The chord vector between the two position vectors, 
-\\(\mathbf{c} = \mathbf{r}_2 - \mathbf{r}_1\\), defines a natural basis: 
+\\(\mathbf{c} = \mathbf{r}\_2 - \mathbf{r}\_1\\), defines a natural basis: 
 velocity components are decomposed into a **chord-aligned** component 
-\\(v_c\\) and a **radial-aligned** component \\(v_\rho\\) at each end of the 
+\\(v\_c\\) and a **radial-aligned** component \\(v\_\rho\\) at each end of the 
 transfer.
 
 Applying the boundary conditions in this basis yields a **quartic 
 polynomial** in the transfer orbit's angular momentum \\(h\\):
 
-$$h^4 + a_3 h^3 + a_1 h + a_0 = 0$$
+$$h^4 + a\_3 h^3 + a\_1 h + a\_0 = 0$$
 
-whose coefficients depend on the known geometry (\\(\mathbf{r}_1\\), 
-\\(\mathbf{r}_2\\), \\(\mathbf{v}_1^-\\), \\(\mathbf{v}_2^+\\)) and gravitational 
+whose coefficients depend on the known geometry (\\(\mathbf{r}\_1\\), 
+\\(\mathbf{r}\_2\\), \\(\mathbf{v}\_1^-\\), \\(\mathbf{v}\_2^+\\)) and gravitational 
 parameter \\(\mu\\). Each **real, positive root** of this polynomial 
 corresponds to a physically valid transfer geometry. For each root, the 
 transfer semi-major axis, eccentricity, and Lagrange time-of-flight are 
 computed, and the root yielding the lowest total impulse energy 
-\\(J = \tfrac{1}{2}(\Delta\mathbf{v}_1^T\Delta\mathbf{v}_1 + \Delta\mathbf{v}_2^T\Delta\mathbf{v}_2)\\) 
+\\(J = \tfrac{1}{2}(\Delta\mathbf{v}\_1^T\Delta\mathbf{v}\_1 + \Delta\mathbf{v}\_2^T\Delta\mathbf{v}\_2)\\) 
 is selected as the optimal transfer at that departure/arrival geometry.
 
 The solver handles both **elliptical** transfer orbits (via the standard 
@@ -81,8 +81,8 @@ types:
 precession), \\(\omega = 270°\\) (placing apogee over the northern 
 hemisphere)
 
-For every combination of departure true anomaly \\(f_1\\) (0° to 360°) and 
-transfer angle \\(\Delta f = f_2 - f_1\\) (10° to 350°), the solver computed 
+For every combination of departure true anomaly \\(f\_1\\) (0° to 360°) and 
+transfer angle \\(\Delta f = f\_2 - f\_1\\) (10° to 350°), the solver computed 
 the optimal two-impulse transfer cost and time of flight, producing a full 
 porkchop-style cost/time map.
 
@@ -99,7 +99,7 @@ The contour maps reveal the characteristic low-cost transfer regions
 across the departure/transfer-angle space. The **global minimum** transfer 
 was found at:
 
-$$\Delta V_{\min} = 3.39 \text{ km/s} \quad \text{at } f_1 = 277°,\ \Delta f = 345.3°,\ \text{TOF} = 5.42 \text{ hr}$$
+$$\Delta V\_{\min} = 3.39 \text{ km/s} \quad \text{at } f\_1 = 277°,\ \Delta f = 345.3°,\ \text{TOF} = 5.42 \text{ hr}$$
 
 This value is physically sensible: an unconstrained Hohmann-style raise 
 from LEO to a Molniya-class apogee alone would cost roughly 2.4–2.5 km/s, 
@@ -112,7 +112,7 @@ change between the ISS-like (51.6°) and Molniya-like (63.4°) inclinations
 ![3D visualization of the optimal transfer arc between ISS-like and Molniya-like orbits](/images/stark_3d_transfer.png)
 
 The optimal transfer identified by the polynomial solver was independently 
-verified by propagating the resulting departure velocity \\(\mathbf{v}_1^+\\) 
+verified by propagating the resulting departure velocity \\(\mathbf{v}\_1^+\\) 
 forward through simple two-body dynamics for the computed time of flight. 
 The resulting arc closely connects the two parking orbits at the predicted 
 departure and arrival points, confirming consistency between the 
