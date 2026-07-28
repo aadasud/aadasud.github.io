@@ -80,7 +80,7 @@ had to be sustained for longer). Extending the sweep down to $R = 0.01$
 revealed the fuller picture: **the true relationship is parabolic**, with 
 a sharp minimum near $R \approx 1$ and cost rising on *both* sides.
 
-![Total ΔV vs. R showing the parabolic tradeoff for the offset-only case](/images/lqr_qr_parabolic.png)
+![Total ΔV vs. R showing the parabolic tradeoff for the offset-only case](/images/lqr_dv_comparison.png)
 
 This makes physical sense once both regimes are considered:
 
