@@ -26,8 +26,8 @@ accuracy-vs-fuel tradeoff when a persistent disturbance is present.
 
 The libration points are equilibria of the CR3BP where gravitational and 
 centrifugal forces balance in the rotating frame. Linearizing the CR3BP 
-equations of motion about L1 produces a 6×6 system matrix whose eigenvalues 
-reveal the local stability structure:
+equations of motion about L1 produces a $6\times6$ system matrix whose 
+eigenvalues reveal the local stability structure:
 
 $$\delta\dot{\mathbf{x}} = A\,\delta\mathbf{x}, \qquad A = \begin{bmatrix} 0_{3\times3} & I_{3\times3} \\ U_{\text{pos}} & 2\Omega \end{bmatrix}$$
 
@@ -37,10 +37,11 @@ is the Coriolis coupling matrix. At L1, this yields:
 $$\lambda \in \{\pm 2.932,\ \pm 2.334i,\ \pm 2.269i\}$$
 
 one real positive eigenvalue (unstable), one real negative eigenvalue 
-(stable), and two oscillatory center-manifold pairs — the textbook saddle × 
-center × center structure. The positive real eigenvalue is what forces the 
-station-keeping problem to exist: any perturbation along that direction 
-grows as $e^{2.93t}$ in nondimensional time.
+(stable), and two oscillatory center-manifold pairs — the textbook 
+saddle $\times$ center $\times$ center structure. The positive real 
+eigenvalue is what forces the station-keeping problem to exist: any 
+perturbation along that direction grows as $e^{2.93t}$ in nondimensional 
+time.
 
 ### Control Design
 
@@ -59,37 +60,39 @@ that only works on its own linearization isn't very useful.
 
 ### LQR Stabilizes the Saddle Point
 
-A small initial offset of ~38 km from L1 grows to roughly 32,000 km within 
-about 4.6 days under no control. With LQR active, the same offset is driven 
-down by roughly three orders of magnitude and held near L1 indefinitely, 
-even under a small continuous disturbance representing unmodeled effects 
-like solar radiation pressure.
+A small initial offset of approximately 38 km from L1 grows to roughly 
+32,000 km within about 4.6 days under no control. With LQR active, the 
+same offset is driven down by roughly three orders of magnitude and held 
+near L1 indefinitely, even under a small continuous disturbance 
+representing unmodeled effects like solar radiation pressure.
 
 ![Trajectory comparison: uncontrolled divergence vs. LQR-controlled, with start/end markers](/images/lqr_traj_comparison.png)
 
 The closed-loop eigenvalues confirm exactly what changed: the previously 
-unstable mode (+2.93) becomes stable (-2.90), and the oscillatory 
-center-manifold modes each picked up modest additional damping — LQR didn't 
-just barely tame the bad mode, it improved the whole system's behavior.
+unstable mode ($+2.93$) becomes stable ($-2.90$), and the oscillatory 
+center-manifold modes each picked up modest additional damping — LQR 
+didn't just barely tame the bad mode, it improved the whole system's 
+behavior.
 
 ### The Q/R Fuel-Cost Tradeoff Is Parabolic, Not Monotonic
 
-An initial sweep across $R \in [1, 10000]$ suggested total ΔV simply 
-increased with R (gentler control costing more fuel, since the correction 
-had to be sustained for longer). Extending the sweep down to $R = 0.01$ 
-revealed the fuller picture: **the true relationship is parabolic**, with 
-a sharp minimum near $R \approx 1$ and cost rising on *both* sides.
+An initial sweep across $R \in [1, 10000]$ suggested total $\Delta V$ 
+simply increased with $R$ (gentler control costing more fuel, since the 
+correction had to be sustained for longer). Extending the sweep down to 
+$R = 0.01$ revealed the fuller picture: **the true relationship is 
+parabolic**, with a sharp minimum near $R \approx 1$ and cost rising on 
+*both* sides.
 
-![Total ΔV vs. R showing the parabolic tradeoff for the offset-only case](/images/lqr_dv_comparison.png)
+![Total delta-V vs. R showing the parabolic tradeoff for the offset-only case](/images/lqr_dv_comparison.png)
 
 This makes physical sense once both regimes are considered:
 
-- **Very small R (aggressive control):** the controller commands large, 
+- **Very small $R$ (aggressive control):** the controller commands large, 
   fast corrective accelerations. Without any actuator limits in the model, 
   overly aggressive gains can overshoot and fight their own correction, 
   wasting fuel on oscillatory over-correction rather than converging 
   efficiently.
-- **Very large R (gentle control):** the controller applies a small, 
+- **Very large $R$ (gentle control):** the controller applies a small, 
   low-level correction sustained over a much longer time. Even though the 
   instantaneous thrust is smaller, the total integrated cost grows because 
   the correction has to be maintained for so long.
@@ -101,22 +104,24 @@ rather than an arbitrarily "good enough" tuning choice.
 ### Under a Persistent Disturbance: A Fuel-vs-Accuracy Tradeoff, Not Just Fuel-vs-Speed
 
 With a small constant disturbance active (representing an unmodeled effect 
-like solar radiation pressure), the annual station-keeping ΔV showed a 
-similar early dip-and-rise pattern, but continued to *decrease* at larger R 
-values rather than turning back upward the way the offset-only case did.
+like solar radiation pressure), the annual station-keeping $\Delta V$ 
+showed a similar early dip-and-rise pattern, but continued to *decrease* 
+at larger $R$ values rather than turning back upward the way the 
+offset-only case did.
 
-Very large values of R were excluded from the final sweep because they 
+Very large values of $R$ were excluded from the final sweep because they 
 failed to settle within the simulation window (900 nondimensional time 
 units) and disrupted the settling-time bookkeeping used elsewhere in the 
 analysis — but the trend while they were still included pointed to a 
-distinct explanation: **at large R, the controller trades station-keeping 
-accuracy for fuel savings.** Rather than continuing to fully reject the 
-disturbance, an overly gentle controller allows the steady-state position 
-error to grow, and in doing so requires less average counter-thrust. Beyond 
-a certain R, that steady-state error exceeds the desired station-keeping 
-margin (2% of the initial offset, in this study) well before the simulation 
-window ends — meaning the apparent fuel savings come at the cost of no 
-longer meeting the mission's positional accuracy requirement.
+distinct explanation: **at large $R$, the controller trades 
+station-keeping accuracy for fuel savings.** Rather than continuing to 
+fully reject the disturbance, an overly gentle controller allows the 
+steady-state position error to grow, and in doing so requires less 
+average counter-thrust. Beyond a certain $R$, that steady-state error 
+exceeds the desired station-keeping margin (2% of the initial offset, in 
+this study) well before the simulation window ends — meaning the apparent 
+fuel savings come at the cost of no longer meeting the mission's 
+positional accuracy requirement.
 
 This is a meaningfully different tradeoff than the offset-only case: there, 
 the "cost" of an overly gentle controller was purely extra fuel. Here, the 
