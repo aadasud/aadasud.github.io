@@ -11,54 +11,58 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* M.Eng. in Aerospace Engineering, Texas A&M University, 2025–2026 (expected), GPA 4.0
+* B.S. in Aerospace Engineering, Texas A&M University, 2021–2025, GPA 3.531
 
-Work experience
+Relevant Coursework
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Aero 622 – Spacecraft Dynamics
+* Aero 623 – Spacecraft Maneuvers
+* Aero 624 – Celestial Mechanics
+* Aero 626 – Estimation of Dynamic Systems
+* Aero 634 – Applications of Functional Interpolation to Optimization
+* Aero 638 – Intuitive & Counter-Intuitive Mechanics (upcoming)
+* Aero 651 – Human Spaceflight Operations
+* Aero 685 - Directed Studies: Manifold Transfers (upcoming)
+* Aero 689 – Spacecraft Engineering (upcoming)
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+Research Experience
+======
+* **Research Assistant**, Texas A&M Bioastronautics & Human Performance Laboratory (Jun 2025–Present)
+  * Developing a Python GUI for real-time biometrics processing and Orthostatic Intolerance (OI) event detection
+  * Creating a predictive neural network that reads live biometric data and controls active compression garments for OI prevention
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
+Projects
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* **State Estimation for Lunar Transfer Trajectories** (Aug 2025–Dec 2025) — Aero 626, Estimation of Dynamic Systems
+  * Developed a simulation generating state measurements from CR3BP dynamics and a DSN range/Doppler measurement model
+  * Implemented UKF and LUMVE Batch Least Squares filters to estimate spacecraft state across the trajectory
+  * Tested filter robustness under poor initial state estimates and high measurement uncertainty
 
-Publications
+* **Energy-Optimal Low-Thrust Rendezvous with TFC** (Aug 2025–Dec 2025) — Aero 634, Applications of Functional Interpolation to Optimization
+  * Calculated the optimal low-thrust control for a spacecraft docking maneuver
+  * Applied the Theory of Functional Connections to numerically solve the governing system of differential equations
+  * Verified solution accuracy via Hamiltonian constancy and cost minimization
+
+* **Senior Capstone – 21st Century Lunar Module** (Aug 2024–May 2025) — Lead Structures Engineer, GNC Engineer
+  * Retrofitted the Apollo Lunar Module with modern materials (e.g. carbon fiber composites), reducing dry mass by >15%
+  * Developed a mission profile for a four-person, full-lunar-surface-access LM within the Artemis architecture
+  * Calculated ΔV and orbital maneuvers to size new propellant tanks
+  * Redesigned the landing gear (spring-damper system, factor of safety >1.5) for reusability
+  * Built a test rig and prototype to assess landing stability on lunar simulant
+
+See the [portfolio](/portfolio/) page for full write-ups of select projects above.
+
+Leadership & Teams
 ======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
+* **Structures Product Owner / Structures Engineer**, TAMU SAE Aero Design Team (Aug 2021–May 2025)
+  * Led a team building the structures of an RC aircraft for the SAE Aero Design Competition
+  * Managed budget, deadlines, and team members across the design-build-test timeline
+  * Wrote a weight estimation script accurate to within 5% to accelerate design iteration
+  * Devised weight-reduction testing methods and validated simulation results against real-world testing
+
+Technical Skills
 ======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+* **Programming:** Python, MATLAB, C++, Java
+* **Design & Analysis:** FreeFlyer, SolidWorks, Fusion 360, Inventor, Finite Element Analysis (FEA)
+* **Specializations:** GNC, Orbital Mechanics, Systems Engineering
