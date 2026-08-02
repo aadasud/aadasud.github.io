@@ -11,7 +11,7 @@ Jekyll template.
 I'm a graduate student in Aerospace Engineering at Texas A&M University, 
 focusing on GNC, optimal control, celestial mechanics, and state 
 estimation. This site showcases coursework and independent projects in 
-these areas — full write-ups, theory, and results are on the 
+these areas, and the full write-ups, theory, and results are on the 
 [Projects](https://aadasud.github.io/portfolio/) page.
 
 Individual project code repositories are linked from each write-up where 
