@@ -7,14 +7,14 @@ collection: portfolio
 ## Overview
 
 Collinear libration points in the Circular Restricted Three-Body Problem 
-(CR3BP) are unstable saddle equilibria — a fact with real consequences for 
-missions like JWST (L2) and the planned Lunar Gateway. Any spacecraft placed 
+(CR3BP) are unstable saddle equilibria, a fact with real consequences for 
+missions like JWST (L2) and the canceled Lunar Gateway. Any spacecraft placed 
 near one of these points will drift away exponentially without active 
 control. This project designs a Linear Quadratic Regulator (LQR) to hold a 
 spacecraft near Earth-Moon L1, validates the controller against the full 
 nonlinear dynamics, and then sweeps the control penalty weighting across 
 five orders of magnitude to characterize how control aggressiveness trades 
-off against fuel cost and station-keeping accuracy — revealing a parabolic 
+off against fuel cost and station-keeping accuracy, revealing a parabolic 
 fuel-cost curve with a genuine optimum, and a separate, distinct 
 accuracy-vs-fuel tradeoff when a persistent disturbance is present.
 
@@ -37,8 +37,7 @@ where \\(U\_{\text{pos}}\\) is the Hessian of the effective potential and
 $$\lambda \in \{\pm 2.932,\ \pm 2.334i,\ \pm 2.269i\}$$
 
 one real positive eigenvalue (unstable), one real negative eigenvalue 
-(stable), and two oscillatory center-manifold pairs — the textbook 
-saddle \\(\times\\) center \\(\times\\) center structure. The positive real 
+(stable), and two oscillatory pairs. The positive real 
 eigenvalue is what forces the station-keeping problem to exist: any 
 perturbation along that direction grows as \\(e^{2.93t}\\) in nondimensional 
 time.
@@ -70,7 +69,7 @@ representing unmodeled effects like solar radiation pressure.
 
 The closed-loop eigenvalues confirm exactly what changed: the previously 
 unstable mode (\\(+2.93\\)) becomes stable (\\(-2.90\\)), and the oscillatory 
-center-manifold modes each picked up modest additional damping — LQR 
+center-manifold modes each picked up modest additional damping. The LQR 
 didn't just barely tame the bad mode, it improved the whole system's 
 behavior.
 
@@ -112,31 +111,39 @@ offset-only case did.
 Very large values of \\(R\\) were excluded from the final sweep because they 
 failed to settle within the simulation window (900 nondimensional time 
 units) and disrupted the settling-time bookkeeping used elsewhere in the 
-analysis — but the trend while they were still included pointed to a 
+analysis, but the trend while they were still included pointed to a 
 distinct explanation: **at large \\(R\\), the controller trades 
 station-keeping accuracy for fuel savings.** Rather than continuing to 
-fully reject the disturbance, an overly gentle controller allows the 
-steady-state position error to grow, and in doing so requires less 
+fully reject the disturbance, an overly gentle controller fully minimize the 
+steady-state position error, and in doing so requires less 
 average counter-thrust. Beyond a certain \\(R\\), that steady-state error 
 exceeds the desired station-keeping margin (2% of the initial offset, in 
-this study) well before the simulation window ends — meaning the apparent 
+this study) well before the simulation window ends, meaning the apparent 
 fuel savings come at the cost of no longer meeting the mission's 
 positional accuracy requirement.
 
 This is a meaningfully different tradeoff than the offset-only case: there, 
 the "cost" of an overly gentle controller was purely extra fuel. Here, the 
 cost of an overly gentle controller is a station-keeping box that may be 
-too large to be useful — a much more mission-relevant failure mode, and a 
+too large to be useful, a much more mission-relevant failure mode, and a 
 good illustration of why real GNC teams tune station-keeping controllers 
-against an explicit accuracy requirement rather than fuel cost alone.
+against an explicit accuracy requirement rather than fuel cost alone. 
+
+A natural extension would be to reformulate station-keeping as a 
+constrained optimal control problem by applying a Lagrange multiplier 
+penalty on the terminal boundary conditions and deriving the optimal 
+control law via Pontryagin's Minimum Principle, in the same spirit as the 
+[minimum-fuel low-thrust orbit-raising project](/portfolio/leo-minfuel-shooting/) 
+on this site - to directly optimize for time, fuel, or energy rather than 
+relying on LQR's fixed quadratic cost structure.
 
 ---
 
 ## Tools & Methods
 
 MATLAB, algebraic Riccati equation solving (`lqr`), nonlinear ODE 
-integration (`ode45`), CR3BP linearization, controllability analysis, 
-eigenstructure analysis, unit nondimensionalization/redimensionalization
+integration (`ode45`), CR3BP linearization, controllability analysis, unit 
+nondimensionalization/redimensionalization
 
 ---
 
