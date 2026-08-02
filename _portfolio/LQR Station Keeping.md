@@ -149,4 +149,4 @@ nondimensionalization/redimensionalization
 
 ## Links
 
-- [View Code on GitHub](https://github.com/yourusername/lqr-l1-stationkeeping)
+- [View Code on GitHub](https://github.com/aadasud/lqr-l1-stationkeeping)
