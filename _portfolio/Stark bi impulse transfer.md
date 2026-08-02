@@ -6,8 +6,8 @@ collection: portfolio
 
 ## Overview
 
-Given two orbits and a desired transfer angle, how much does it cost — in 
-\\(\Delta V\\) and in time — to move a spacecraft from one to the other? This 
+Given two orbits and a desired transfer angle, how much does it cost in 
+\\(\Delta V\\) and in time to move a spacecraft from one to the other? This 
 project answers that question using the **Stark structure method**, a 
 lesser-known alternative to the classical universal-variables Lambert 
 solver, applied to a real and recognizable orbit pair: an ISS-like low 
@@ -130,6 +130,6 @@ verification
 
 ---
 
-## Links
+## Code
 
-- [View Code on GitHub](https://github.com/yourusername/stark-transfer-solver)
+- Code available upon request.
