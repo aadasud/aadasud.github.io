@@ -23,7 +23,7 @@ repository               : "aadasud/aadasud.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "images/Portrait.jpg"
+  avatar           : "images/Portrait.JPG"
   name             : "Aadarsh Sudanagunta"
   pronouns         : # example: "she/her"  
   bio              : "Graduate student in Aerospace Engineering, focusing on GNC, optimal control, celestial mechanics, and state estimation"
