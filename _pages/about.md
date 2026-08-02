@@ -4,12 +4,6 @@ title: "About Me"
 author_profile: true
 ---
 
----
-permalink: /about/
-title: "About Me"
-author_profile: true
----
-
 I'm a graduate student in Aerospace Engineering at Texas A&M University, 
 pursuing a Master of Engineering with a focus on Guidance, Navigation, and 
 Control (GNC). My interests center on optimal control, celestial mechanics, 
