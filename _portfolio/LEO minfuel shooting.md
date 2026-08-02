@@ -30,7 +30,7 @@ condition number by roughly ten orders of magnitude.
 **Thruster:** Busek BHT-200 — a real, flight-proven Hall-effect thruster 
 (TacSat-2, FalconSat-5/6)
 - Thrust: 13 mN
-- Specific impulse: 1390 s → exhaust velocity \(c = I_{sp}g_0 = 13.63\) km/s
+- Specific impulse: 1390 s → exhaust velocity \\(c = I\_{sp}g\_0 = 13.63\\) km/s
 
 **Maneuver:** Circular-to-circular altitude raise, 400 km → 700 km (300 km 
 raise), completed in roughly 18 orbits
@@ -41,76 +41,76 @@ raise), completed in roughly 18 orbits
 
 ### Dynamics and the Hamiltonian
 
-The spacecraft state is described in polar coordinates — radius \(r\), 
-angle \(\theta\), radial velocity \(u\), tangential velocity \(v\), and 
-mass \(m\) — with a controllable thrust vector of magnitude \(T\) and 
-steering angle \(\alpha\):
+The spacecraft state is described in polar coordinates — radius \\(r\\), 
+angle \\(\theta\\), radial velocity \\(u\\), tangential velocity \\(v\\), and 
+mass \\(m\\) — with a controllable thrust vector of magnitude \\(T\\) and 
+steering angle \\(\alpha\\):
 
 $$\dot r = u, \quad \dot\theta = \frac{v}{r}, \quad \dot u = \frac{v^2}{r}-\frac{\mu}{r^2}+\frac{T}{m}\sin\alpha, \quad \dot v = -\frac{uv}{r}+\frac{T}{m}\cos\alpha, \quad \dot m = -\frac{T}{c}$$
 
-A costate is attached to each state — \(\lambda_r,\lambda_u,\lambda_v,\lambda_m\) 
-— with dynamics derived from the Hamiltonian \(H=\lambda^Tf\) via 
-\(\dot\lambda = -\partial H/\partial x\). Minimizing \(H\) over the 
+A costate is attached to each state — \\(\lambda\_r,\lambda\_u,\lambda\_v,\lambda\_m\\) 
+— with dynamics derived from the Hamiltonian \\(H=\lambda^Tf\\) via 
+\\(\dot\lambda = -\partial H/\partial x\\). Minimizing \\(H\\) over the 
 steering angle gives the classical primer-vector result: thrust always 
-points exactly opposite the vector \((\lambda_u,\lambda_v)\):
+points exactly opposite the vector \\((\lambda\_u,\lambda\_v)\\):
 
-$$\sin\alpha^* = \frac{-\lambda_u}{\sqrt{\lambda_u^2+\lambda_v^2}}, \qquad \cos\alpha^* = \frac{-\lambda_v}{\sqrt{\lambda_u^2+\lambda_v^2}}$$
+$$\sin\alpha^* = \frac{-\lambda\_u}{\sqrt{\lambda\_u^2+\lambda\_v^2}}, \qquad \cos\alpha^* = \frac{-\lambda\_v}{\sqrt{\lambda\_u^2+\lambda\_v^2}}$$
 
 ### Bang-Bang Thrust Structure
 
-Because thrust magnitude \(T\) enters the Hamiltonian *linearly* (not 
-quadratically), minimizing \(H\) over the bounded control \(T\in[0,T_{max}]\) 
+Because thrust magnitude \\(T\\) enters the Hamiltonian *linearly* (not 
+quadratically), minimizing \\(H\\) over the bounded control \\(T\in[0,T\_{max}]\\) 
 always drives the solution to one endpoint or the other — there is no 
 interior optimum. This produces a **switching function**
 
-$$S(t) = \frac{\sqrt{\lambda_u^2+\lambda_v^2}}{m} + \frac{\lambda_m}{c}$$
+$$S(t) = \frac{\sqrt{\lambda\_u^2+\lambda\_v^2}}{m} + \frac{\lambda\_m}{c}$$
 
-with thrust at full power when \(S(t)>0\) and off when \(S(t)<0\). \(S(t)\) 
+with thrust at full power when \\(S(t)>0\\) and off when \\(S(t)<0\\). \\(S(t)\\) 
 was confirmed to stay strictly positive across the entire converged 
 trajectory — for this weak-thrust, modest-transfer regime, the optimal 
 strategy is continuous full thrust with no coast arcs.
 
-### Transversality and the Sign of \(\lambda_m(t_f)\)
+### Transversality and the Sign of \\(\lambda\_m(t\_f)\\)
 
-Since \(m(t_f)\) is free (we want to *maximize* it, not hit a specific 
-value) while \(r(t_f),u(t_f),v(t_f)\) are fixed to the target orbit, the 
+Since \\(m(t\_f)\\) is free (we want to *maximize* it, not hit a specific 
+value) while \\(r(t\_f),u(t\_f),v(t\_f)\\) are fixed to the target orbit, the 
 free-endpoint transversality condition applies specifically to the mass 
 costate. Careful application of the augmented-cost first-variation result 
-— \(\left(\phi_x+\psi_x^T\nu-\lambda\right)\big|_{t_f}=0\) for the free 
+— \\(\left(\phi\_x+\psi\_x^T\nu-\lambda\right)\big|\_{t\_f}=0\\) for the free 
 state components — gives
 
-$$\lambda_m(t_f) = \frac{\partial\phi}{\partial m(t_f)} = \frac{\partial(-m(t_f))}{\partial m(t_f)} = -1$$
+$$\lambda\_m(t\_f) = \frac{\partial\phi}{\partial m(t\_f)} = \frac{\partial(-m(t\_f))}{\partial m(t\_f)} = -1$$
 
-for the standard Hamiltonian convention \(H=\lambda^Tf\), minimizing 
-\(J=-m(t_f)\). This was independently verified two ways: it is the only 
+for the standard Hamiltonian convention \\(H=\lambda^Tf\\), minimizing 
+\\(J=-m(t\_f)\\). This was independently verified two ways: it is the only 
 sign consistent with the correctly-derived switching function producing 
 genuine (not degenerate) thrust-on behavior, and a full shooting solve 
 under this convention converges to the same physical trajectory as the 
-equivalent \(+1\) convention, differing only in the internal sign of the 
-otherwise-decoupled \(\lambda_m\) track.
+equivalent \\(+1\\) convention, differing only in the internal sign of the 
+otherwise-decoupled \\(\lambda\_m\\) track.
 
 ---
 
 ## The Costate Scale Degeneracy
 
 Initial shooting attempts, solving directly for all four initial costates 
-\((\lambda_r,\lambda_u,\lambda_v,\lambda_m)(0)\), produced a Jacobian with 
-condition number \(\sim10^{15}\) — numerically singular. 
+\\((\lambda\_r,\lambda\_u,\lambda\_v,\lambda\_m)(0)\\), produced a Jacobian with 
+condition number \\(\sim10^{15}\\) — numerically singular. 
 
-The cause traces directly to the steering law: since \(\alpha^*\) is built 
-from *normalized* ratios of \((\lambda_u,\lambda_v)\), and every term in 
+The cause traces directly to the steering law: since \\(\alpha^*\\) is built 
+from *normalized* ratios of \\((\lambda\_u,\lambda\_v)\\), and every term in 
 the costate ODEs is linear and homogeneous in 
-\((\lambda_r,\lambda_u,\lambda_v)\), scaling the entire initial vector by 
-any positive constant \(k\) leaves \(\alpha^*(t)\) — and therefore the 
+\\((\lambda\_r,\lambda\_u,\lambda\_v)\\), scaling the entire initial vector by 
+any positive constant \\(k\\) leaves \\(\alpha^*(t)\\) — and therefore the 
 entire physical trajectory — **exactly** unchanged. This was confirmed 
 directly: scaling the converged costates by factors of 0.5× to 5× left 
-\(r_f, u_f, v_f\) bit-for-bit identical.
+\\(r\_f, u\_f, v\_f\\) bit-for-bit identical.
 
-**Resolution:** the scale freedom was removed by fixing \(\lambda_v(0)=-1\) 
+**Resolution:** the scale freedom was removed by fixing \\(\lambda\_v(0)=-1\\) 
 (chosen for its reliably nonzero, known sign) and solving only for the two 
-genuinely meaningful ratios plus \(\lambda_m(0)\) — reducing the shooting 
+genuinely meaningful ratios plus \\(\lambda\_m(0)\\) — reducing the shooting 
 problem from 4 unknowns to a minimal, non-degenerate set of 3. This 
-dropped the Jacobian condition number to \(\sim10^5\), and the resulting 
+dropped the Jacobian condition number to \\(\sim10^5\\), and the resulting 
 system solves cleanly with `fsolve` using an analytic Jacobian built from 
 a 9-state state-transition matrix integrated alongside the trajectory.
 
@@ -120,7 +120,7 @@ a 9-state state-transition matrix integrated alongside the trajectory.
 
 Solved via MATLAB's `fsolve` with an analytic STM-based Jacobian 
 (`SpecifyObjectiveGradient`), starting from a generic, physically-motivated 
-initial guess (near-zero radial/steering ratios, \(\lambda_m(0)\approx-1\)) 
+initial guess (near-zero radial/steering ratios, \\(\lambda\_m(0)\approx-1\\)) 
 — no problem-specific tuning required:
 
 ```
@@ -129,7 +129,7 @@ Final residual norm: 2.119320e-07
 ```
 
 `fsolve` reported a genuine, unambiguous convergence — "Equation solved," 
-sum-of-squares residual driven to \(4.49\times10^{-14}\) in 6 iterations, 
+sum-of-squares residual driven to \\(4.49\times10^{-14}\\) in 6 iterations, 
 gradient optimality below tolerance.
 
 **Final boundary condition errors:**
@@ -139,7 +139,7 @@ gradient optimality below tolerance.
 | Final radius | 0.91 m |
 | Final radial velocity | 17.4 mm/s |
 | Final tangential velocity | 0.2 mm/s |
-| \(\lambda_m(t_f)\) | exact to displayed precision |
+| \\(\lambda\_m(t\_f)\\) | exact to displayed precision |
 
 **Propellant used:** 96.4 g out of 8 kg initial mass (≈1.2% of total 
 spacecraft mass) to complete the 300 km raise.
