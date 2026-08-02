@@ -36,6 +36,3 @@ main:
     url: /portfolio/
   - title: "CV"
     url: /cv/
-    
-  - title: "Guide"
-    url: /markdown/
