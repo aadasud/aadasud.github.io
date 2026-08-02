@@ -10,8 +10,8 @@ collection: portfolio
 
 As humanity returns to the Moon through NASA's Artemis program, accurate 
 real-time navigation during the translunar coast phase is critical. This 
-project implements and compares two state estimation approaches — Batch 
-Least Squares (BLS) and an Unscented Kalman Filter (UKF) — for estimating 
+project implements and compares two state estimation approaches, Batch 
+Least Squares (BLS) and an Unscented Kalman Filter (UKF), for estimating 
 the position and velocity of a spacecraft traveling from Low Earth Orbit 
 to the Moon.
 
