@@ -21,7 +21,9 @@ and prevention.
 I completed my B.S. in Aerospace Engineering at Texas A&M in 2025, where I 
 served as Lead Structures Engineer and GNC Engineer for my senior capstone 
 team, redesigning the Apollo Lunar Module for a modern Artemis-era mission 
-profile, and as Structures Product Owner for the TAMU SAE Aero Design Team.
+profile, and as Structures Product Owner for the TAMU SAE Aero Design 
+Team, helping lead the team to 1st Overall at the 2024 SAE Aero Design 
+Competition.
 
 This site showcases a selection of my coursework and independent projects 
 in GNC and orbital mechanics, spanning state estimation, optimal control, 
