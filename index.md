@@ -2,6 +2,8 @@
 layout: single
 author_profile: true
 title: "Aadarsh Sudanagunta"
+header:
+  image: og-preview.png
 ---
 
 
