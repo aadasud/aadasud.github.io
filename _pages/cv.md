@@ -60,6 +60,7 @@ Leadership & Teams
   * Managed budget, deadlines, and team members across the design-build-test timeline
   * Wrote a weight estimation script accurate to within 5% to accelerate design iteration
   * Devised weight-reduction testing methods and validated simulation results against real-world testing
+  * Improved team placement from 4th Overall (2022) to 3rd Overall (2023) to 1st Overall (2024)
 
 Technical Skills
 ======
